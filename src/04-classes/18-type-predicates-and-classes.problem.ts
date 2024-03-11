@@ -6,9 +6,9 @@ class Form<TValues> {
   constructor(
     public values: TValues,
     private validate: (values: TValues) => string | void,
-  ) {}
+  ) { }
 
-  isInvalid() {
+  isInvalid(): this is this & { error: string } {
     const result = this.validate(this.values);
 
     if (typeof result === "string") {
